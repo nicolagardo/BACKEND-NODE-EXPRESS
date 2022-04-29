@@ -8,11 +8,20 @@ require("dotenv").config()
 
 
 app.use(cors())
+app.use(express.json())
+
 
 const port = process.env.PORT || 3000
 
+/**
+ * Aqui invocamos a las rutas
+ */
+
+// NOTE: localhost/api/____________
+app.use("/api", require("./routes"))
+
 app.listen(port, () => {
-    console.log(`Tu app esta lista por http://localhost:${port}`.green);
+    console.log(`Tu app esta lista por http://localhost:${port}`.bgYellow);
 })
 
 dbConnect()
